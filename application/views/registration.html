@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../public/css/form.css">
+        <script defer type="text/javascript" src="../public/js/formValidation.js"></script>
+        <title>Registration</title>
+    </head>
+    <body class="registration">
+        <div class="grid-outer-container">
+            <header class="reg-header">
+                <h1>Registration Form</h1>
+            </header>
+            <form>
+                <div class="grid-reg-container">
+                    <label id="reg-user" class="site-information">Username</label>
+                    <input type="text" placeholder=" Username" id="reg-user-input" class="reg-information-input" required/>
+
+                    <label id="email" class="site-information">Email</label>
+                    <input type="email" placeholder=" Email" id="email-input" class="reg-information-input" required/>
+
+                    <label id="reg-password" class="site-information">Password</label>
+                    <input type="password" placeholder=" Password" id="reg-pass-input" class="reg-information-input" required/>
+
+                    <label id="confirm-pass" class="site-information">Confirm Password</label>
+                    <input type="password" placeholder=" Confirm Password" id="confirm-pass-input" class="reg-information-input" required/>
+
+                    <div id="checkboxes">
+                        <input type="checkbox" class="checkbox" required/>
+                        <label class="reg-check"> Yes, I am 13+ years of age.</label>
+
+                        <br />
+
+                        <input type="checkbox" class="checkbox" required/>
+                        <label class="reg-check"> Yes, I agree to the <a href="">TOS</a> and <a href="">Privacy Rules</a>.</label>
+                    </div>
+
+                    <button type="submit" id="reg-submit" class="site-submit">Submit</button>
+                    <button type="reset" id="reg-cancel" class="site-cancel">Cancel</button>
+
+                    <div id="validateUser" class="validation">
+                        <label class="required-information">Your username must:</label>
+                        <label id="user-char" class="invalid">begin with a character</label>
+                        <label id="user-length" class="invalid">have 3 or more alphanumeric characters</label>
+                    </div>
+
+                    <div id="validatePass" class="validation">
+                        <label class="required-information">Your password must:</label>
+                        <label id="pass-length" class="invalid">have 8 or more characters</label>
+                        <label id="pass-upper" class="invalid">contain at least 1 uppercase letter</label>
+                        <label id="pass-number" class="invalid">contain at least 1 number</label>
+                        <label id="pass-special" class="invalid">contain at least 1 of the following special characters: / * - + ! @ # $ ^ %</label>
+                    </div>
+
+                    <div id="confirmPass" class="validation">
+                        <label id="confirm-password" class="invalid">Your passwords must match</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

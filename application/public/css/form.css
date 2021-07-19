@@ -1,0 +1,530 @@
+html {
+    background: url("https://9mmwallpapers.com/wp-content/uploads/Genshin-Impact-Laptop-Wallpaper.jpg") no-repeat center 0 fixed;
+    background-size: cover;
+    margin: 0;
+}
+
+body:not(.image-post):not(.home-page), .post-information, .validation, .home-information {
+    border-radius: 0.5rem;
+    border: 0.2rem solid rgba(139, 139, 100, 0.5);
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-bottom-width: 10px;
+}
+
+.home-header {
+    margin: 0 auto;
+}
+
+nav {
+    float: right;
+}
+
+nav ul {
+    margin-top: 8px;
+    margin-right: 20px;
+}
+
+nav li {
+    display: inline-block;
+    margin-left: 80px;
+    padding-left: 7px;
+    position: relative;
+    border-left: 2px solid gray;
+}
+
+nav a {
+    color: #444;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.login {
+    margin: 125px auto auto auto;
+    width: 40%;
+
+}
+
+.registration {
+    margin: 2px auto auto auto;
+    width: 50%;
+    height: 450px;
+}
+
+.post-image {
+    margin: 70px auto auto auto;
+    width: 50%;
+    height: 430px;
+}
+
+.image-post {
+    margin: 10px auto auto auto;
+    width: 70%;
+}
+
+.post-information {
+    text-align: center;
+    width: 80%;
+}
+
+#fake-image {
+    margin: 20px 0 0 0;
+    box-shadow: 0 -2px 2px -2px black, 0 -25px 25px -25px blue, 0 -5px 5px -5px darkblue;
+    padding: 20px 100px;
+}
+
+header:not(.home-information) {
+    background-image: url("https://pbs.twimg.com/media/ED5STSXXsAAckgt?format=jpg&name=large");
+    background-size: cover;
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: 0 2px 0 2px rgba(140, 155, 161, 0.95);
+    font-family: "MV Boli", serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px #04044c;
+    color: #c5ceca;
+    text-align: center;
+    align-self: center;
+    padding: 10px;
+}
+
+.grid-outer-container {
+    display: grid;
+    grid-template-rows: 0.75fr 1fr;
+    gap: 1rem;
+}
+
+.grid-login-container {
+    display: grid;
+    height: 25vh;
+    grid-template-rows: 1fr 1fr 0.5fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+}
+
+.grid-reg-container {
+    display: grid;
+    height: 25vh;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr;
+    grid-template-columns: 1.25fr 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.grid-post-container {
+    display: grid;
+    height: 25vh;
+    grid-template-rows: 1fr 1fr 1fr 1fr 0.5fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+}
+
+.grid-image-container {
+    display: grid;
+    height: 25vh;
+    margin-bottom: 10px;
+    grid-template-rows: repeat(4, 1fr);
+    justify-items: center;
+}
+
+.file {
+    grid-column: 2 / 4;
+    margin-left: 10px;
+    font-family: "Segoe Print", serif;
+    align-content: center;
+}
+
+#post {
+    grid-column: 1 / 4;
+    display: grid;
+    height: 10vh;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+}
+
+#checkboxes {
+    grid-column: 1 / 4;
+    font-family: "Segoe Print", serif;
+}
+
+.validation {
+    display: none;
+    grid-column: 1 / 4;
+    margin-top: 20px;
+    font-family: "MV Boli", serif;
+    text-align: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+.valid {
+    color: #1f80a5;
+}
+
+.valid:before {
+    content: "\2714";
+    margin-right: 10px;
+}
+
+.invalid {
+    color: darkblue;
+}
+
+.invalid:before {
+    content: '\2718';
+    margin-right: 10px;
+}
+
+.required-information {
+    grid-column: 1 / 3;
+    margin-bottom: 10px;
+}
+
+#confirm-password {
+    grid-column: 1 / 3;
+}
+
+br {
+    content: "";
+    margin: 2em;
+    display: block;
+    font-size: 20%;
+}
+
+.site-information, #post-title {
+    font-family: "Segoe Print", serif;
+    text-align: center;
+    align-self: center;
+    border-radius: 10px;
+    border: none;
+    border-left: 2px solid #629eac;
+    border-right: 2px solid #629eac;
+    border-bottom: 2px solid #629eac;
+    box-shadow: 2px 2px 2px rgba(133, 177, 187, 0.82);
+    background-color: white;
+}
+
+input:not(.checkbox):not(.file):not(.search-input), textarea {
+    grid-column: 2 / 4;
+    margin-top: 10px;
+    font-family: "Segoe Print", serif;
+    border-radius: 0.5rem;
+    border: none;
+    border-left: 2px solid rgba(95, 138, 161, 0.36);
+    border-right: 2px solid rgba(95, 138, 161, 0.36);
+    border-top: 2px solid rgba(95, 138, 161, 0.36);
+    background-color: rgba(84, 97, 104, 0.36);
+}
+
+.search {
+    font-size: 17px;
+    font-family: "Segoe Print", serif;
+    border-radius: 25rem;
+    border: none;
+    border-left: 2px solid rgba(95, 138, 161, 0.36);
+    border-right: 2px solid rgba(95, 138, 161, 0.36);
+    border-top: 2px solid rgba(95, 138, 161, 0.36);
+    background-color: rgba(84, 97, 104, 0.36);
+}
+
+.search-input {
+    background: none;
+    border: none;
+    font-family: "Segoe Print", serif;
+    width: 500px;
+}
+
+#post-title {
+    margin: 10px auto auto auto;
+    font-family: "Segoe Script", serif;
+    color: #214b78;
+    width: 60%;
+}
+
+#author, #time, .option {
+    font-family: "Segoe Print", serif;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+
+}
+
+input:not(.checkbox):not(.file):not(.search-input) {
+    height: 30px;
+}
+
+textarea {
+    height: 75px;
+}
+
+input:hover:not(.file):not(.search-input), input:focus:not(.file):not(.search-input), textarea:hover, .search:hover {
+    background-color: aliceblue;
+}
+
+.checkbox {
+    width: 15px;
+    height: 15px;
+}
+
+.site-submit {
+    grid-column: 1 / 3;
+    font-size: 20px;
+    font-family: "Ink Free", serif;
+    font-weight: bold;
+    background-color: cornflowerblue;
+    border-radius: 25rem;
+    border-color: #304b76;
+    box-shadow: 2px 2px 2px #2c2a2a;
+    cursor: pointer;
+}
+
+.site-submit:hover{
+    background-color: #235dcd;
+}
+
+.site-cancel {
+    font-size: 20px;
+    font-family: "Ink Free", serif;
+    font-weight: bold;
+    background-color: #b9cbdb;
+    border-radius: 25rem;
+    border-color: #546168;
+    box-shadow: 2px 2px 2px #8c9ba3;
+    cursor: pointer;
+}
+
+.site-cancel:hover{
+    background-color: #597d9e;
+}
+
+@media screen and (max-width: 822px) {
+    .registration {
+        height: 465px;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .login {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        width: 40%;
+        height: 335px;
+    }
+
+    .log-header {
+        font-size: 90%;
+    }
+
+    .grid-login-container {
+        display: grid;
+        height: 10vh;
+        grid-template-rows: repeat(5, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        grid-template-areas:
+        "user user user"
+        "user-input user-input user-input"
+        "password password password"
+        "pass-input pass-input pass-input"
+        "submit submit cancel";
+    }
+
+    .log-information-input:not(.checkbox):not(.file):not(.search-input) {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    #log-user {
+        grid-area: user;
+    }
+
+    #log-user-input {
+        grid-area: user-input;
+    }
+
+    #log-password {
+        grid-area: password;
+    }
+
+    #log-pass-input {
+        grid-area: pass-input;
+    }
+
+    #log-submit {
+        grid-area: submit;
+    }
+
+    #log-cancel {
+        grid-area: cancel;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .registration {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 60%;
+        height: 593px;
+    }
+
+    .grid-reg-container {
+        display: grid;
+        height: 10vh;
+        grid-template-rows: repeat(10, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        grid-template-areas:
+        "user user user"
+        "user-input user-input user-input"
+        "email email email"
+        "email-input email-input email-input"
+        "password password password"
+        "pass-input pass-input pass-input"
+        "confirm-pass confirm-pass confirm-pass"
+        "confirm-pass-input confirm-pass-input confirm-pass-input"
+        "checkboxes checkboxes checkboxes"
+        "submit submit cancel";
+    }
+
+    .reg-information-input:not(.checkbox):not(.file):not(.search-input) {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    #reg-user {
+        grid-area: user;
+    }
+
+    #reg-user-input {
+        grid-area: user-input;
+    }
+
+    #email {
+        grid-area: email;
+    }
+
+    #email-input {
+        grid-area: email-input;
+    }
+
+    #reg-password {
+        grid-area: password;
+    }
+
+    #reg-pass-input {
+        grid-area: pass-input;
+    }
+
+    #confirm-pass {
+        grid-area: confirm-pass;
+    }
+
+    #confirm-pass-input {
+        grid-area: confirm-pass-input;
+    }
+
+    #reg-submit {
+        grid-area: submit;
+    }
+
+    #reg-cancel {
+        grid-area: cancel;
+    }
+}
+
+@media screen and (max-width: 633px) {
+    .reg-check {
+        font-size: 75%;
+    }
+}
+
+@media screen and (max-width: 519px) {
+    .reg-header {
+        font-size: 95%;
+    }
+}
+
+@media screen and (max-width: 975px) {
+    .post-image {
+        height: 460px;
+    }
+}
+
+@media screen and (max-width: 845px) {
+    .post-image {
+        margin-top: 40px;
+        margin-bottom: 40px;
+        height: 523px;
+    }
+
+    .grid-post-container {
+        display: grid;
+        height: 10vh;
+        grid-template-rows: repeat(7, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        grid-template-areas:
+        "title title title"
+        "title-input title-input title-input"
+        "description description description"
+        "description-input description-input description-input"
+        "image-imput image-imput image-imput"
+        "checkboxes checkboxes checkboxes"
+        "submit submit cancel";
+    }
+
+    .post-information-input:not(.checkbox):not(.file):not(.search-input) {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    #title {
+        grid-area: title;
+    }
+
+    #title-input {
+        grid-area: title-input;
+    }
+
+    #description {
+        grid-area: description;
+    }
+
+    #description-input {
+        grid-area: description-input;
+    }
+
+    #post {
+        grid-area: image-imput;
+    }
+
+    #post-submit {
+        grid-area: submit;
+    }
+
+    #post-cancel {
+        grid-area: cancel;
+    }
+}
+
+@media screen and (max-width: 590px) {
+    .post-header {
+        font-size: 80%;
+    }
+
+    #post-check {
+        font-size: 90%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .post-information {
+        width: 100%;
+    }
+
+    #fake-image {
+        padding-left: 10px;
+        padding-right: 10px;
+        max-width: 100%;
+        height: auto;
+    }
+}
