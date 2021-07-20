@@ -4,7 +4,14 @@ html {
     margin: 0;
 }
 
-body:not(.image-post):not(.home-page), .post-information, .validation, .home-information {
+body {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.form-body:not(.image-post):not(.home-page), .post-information, .validation, .home-information {
     border-radius: 0.5rem;
     border: 0.2rem solid rgba(139, 139, 100, 0.5);
     padding: 10px;
@@ -14,6 +21,18 @@ body:not(.image-post):not(.home-page), .post-information, .validation, .home-inf
 
 .home-header {
     margin: 0 auto;
+    height: 45px;
+}
+
+#create-account {
+    grid-column: 1 / 4;
+    text-align: center;
+    font-family: "Segoe Print", serif;
+}
+
+#home-image {
+    height: 30px;
+    margin-top: 5px;
 }
 
 nav {
@@ -40,32 +59,33 @@ nav a {
     font-size: 14px;
 }
 
-.login {
-    margin: 125px auto auto auto;
+#login {
+    margin: 100px auto auto auto;
     width: 40%;
-
+    height: 300px;
 }
 
-.registration {
+#registration {
     margin: 2px auto auto auto;
     width: 50%;
     height: 450px;
 }
 
-.post-image {
-    margin: 70px auto auto auto;
+#post-image {
+    margin: 3px auto auto auto;
     width: 50%;
     height: 430px;
 }
 
 .image-post {
-    margin: 10px auto auto auto;
+    margin: 20px auto auto auto;
     width: 70%;
 }
 
 .post-information {
     text-align: center;
     width: 80%;
+    margin-top: 20px;
 }
 
 #fake-image {
@@ -74,8 +94,17 @@ nav a {
     padding: 20px 100px;
 }
 
-header:not(.home-information) {
+header:not(.home-information):not(.home-title) {
     background-image: url("https://pbs.twimg.com/media/ED5STSXXsAAckgt?format=jpg&name=large");
+}
+
+.home-title {
+    background-image: url("https://wallpapercave.com/wp/wp5865057.png");
+    padding-top: 0;
+    margin-top: 7px;
+}
+
+header:not(.home-information) {
     background-size: cover;
     border-radius: 0.5rem;
     border: none;
@@ -204,7 +233,7 @@ br {
     background-color: white;
 }
 
-input:not(.checkbox):not(.file):not(.search-input), textarea {
+input:not(.checkbox):not(.file):not(.search-input):placeholder-shown, textarea:placeholder-shown {
     grid-column: 2 / 4;
     margin-top: 10px;
     font-family: "Segoe Print", serif;
@@ -216,6 +245,18 @@ input:not(.checkbox):not(.file):not(.search-input), textarea {
     background-color: rgba(84, 97, 104, 0.36);
 }
 
+input:not(.checkbox):not(.file):not(.search-input):not(placeholder-shown), textarea:not(placeholder-shown) {
+    grid-column: 2 / 4;
+    margin-top: 10px;
+    font-family: "Segoe Print", serif;
+    border-radius: 0.5rem;
+    border: none;
+    border-left: 2px solid rgba(95, 138, 161, 0.36);
+    border-right: 2px solid rgba(95, 138, 161, 0.36);
+    border-top: 2px solid rgba(95, 138, 161, 0.36);
+    background-color: aliceblue;
+}
+
 .search {
     font-size: 17px;
     font-family: "Segoe Print", serif;
@@ -225,13 +266,14 @@ input:not(.checkbox):not(.file):not(.search-input), textarea {
     border-right: 2px solid rgba(95, 138, 161, 0.36);
     border-top: 2px solid rgba(95, 138, 161, 0.36);
     background-color: rgba(84, 97, 104, 0.36);
+    margin-left: 15px;
 }
 
 .search-input {
     background: none;
     border: none;
     font-family: "Segoe Print", serif;
-    width: 500px;
+    width: 40%;
 }
 
 #post-title {
@@ -256,7 +298,7 @@ textarea {
     height: 75px;
 }
 
-input:hover:not(.file):not(.search-input), input:focus:not(.file):not(.search-input), textarea:hover, .search:hover {
+input:hover:not(.file):not(.search-input):placeholder-shown, input:focus:not(.file):not(.search-input):placeholder-shown, textarea:hover, textarea:focus .search:hover {
     background-color: aliceblue;
 }
 
@@ -296,18 +338,24 @@ input:hover:not(.file):not(.search-input), input:focus:not(.file):not(.search-in
     background-color: #597d9e;
 }
 
-@media screen and (max-width: 822px) {
-    .registration {
+@media screen and (max-width: 838px) {
+    #registration {
         height: 465px;
     }
 }
 
+@media screen and (max-width: 986px) {
+    #login {
+        height: 320px;
+    }
+}
+
 @media screen and (max-width: 620px) {
-    .login {
+    #login {
         margin-top: 100px;
         margin-bottom: 100px;
-        width: 40%;
-        height: 335px;
+        width: 200px;
+        height: 360px;
     }
 
     .log-header {
@@ -358,8 +406,8 @@ input:hover:not(.file):not(.search-input), input:focus:not(.file):not(.search-in
     }
 }
 
-@media screen and (max-width: 740px) {
-    .registration {
+@media screen and (max-width: 756px) {
+    #registration {
         margin-top: 20px;
         margin-bottom: 20px;
         width: 60%;
@@ -431,26 +479,30 @@ input:hover:not(.file):not(.search-input), input:focus:not(.file):not(.search-in
     }
 }
 
-@media screen and (max-width: 633px) {
+@media screen and (max-width: 649px) {
     .reg-check {
         font-size: 75%;
     }
 }
 
-@media screen and (max-width: 519px) {
+@media screen and (max-width: 535px) {
+    .reg-check {
+        font-size: 70%;
+    }
+
     .reg-header {
-        font-size: 95%;
+        font-size: 90%;
     }
 }
 
 @media screen and (max-width: 975px) {
-    .post-image {
+    #post-image {
         height: 460px;
     }
 }
 
 @media screen and (max-width: 845px) {
-    .post-image {
+    #post-image {
         margin-top: 40px;
         margin-bottom: 40px;
         height: 523px;
