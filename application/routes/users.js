@@ -2,19 +2,12 @@ var express = require('express');
 var router = express.Router();
 var db = require('../conf/database');
 const UserError = require("../helpers/error/UserError");
+const {successPrint, errorPrint} = require("../helpers/debug/debugprinters");
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
-
-function errorPrint(userCouldNotBeMade, err) {
-  
-}
-
-function successPrint(jsUserWasCreated) {
-  
-}
 
 router.post('/register', (req, res, next) => {
   let username = req.body.username;
@@ -22,10 +15,10 @@ router.post('/register', (req, res, next) => {
   let password = req.body.password;
   let cpassword = req.body.password;
 
-  Promise.resolve(db.execute("SELECT * FROM users WHERE username=?", [username]))
+  db.execute("SELECT * FROM csc317db.users WHERE username=?", [username])
       .then(([results, fields]) => {
         if (results && results.length === 0) {
-          return db.execute("SELECT * FROM users WHERE email=?", [email]);
+          return db.execute("SELECT * FROM csc317db.users WHERE email=?", [email]);
         } else {
           throw new UserError(
             "Registration Failed: Username already exists",
