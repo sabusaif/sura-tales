@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var db = require('../conf/database');
 const UserError = require("../helpers/error/UserError");
-const {successPrint, errorPrint} = require("../helpers/debug/debugprinters");
+const { successPrint, errorPrint } = require("../helpers/debug/debugprinters");
+var bcrypt = require('bcrypt');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -28,16 +29,19 @@ router.post('/register', (req, res, next) => {
         }
       })
       .then(([results, fields]) => {
-        if (results && results.length === 0) {
+          if (results && results.length === 0) {
+              return bcrypt.hash(password, 10);
+          } else {
+              throw new UserError(
+                  "Registration Failed: Email already exists",
+                  "/register",
+                  200
+              );
+          }
+      })
+      .then((hashedPassword) => {
           let baseSQL = "INSERT INTO users (username, email, password, created) VALUES (?,?,?,now());"
-          return db.execute(baseSQL,[username, email, password])
-        } else {
-          throw new UserError(
-              "Registration Failed: Email already exists",
-              "/register",
-              200
-          );
-        }
+          return db.execute(baseSQL,[username, email, hashedPassword])
       })
       .then(([results, fields]) => {
         if(results && results.affectedRows) {
@@ -67,21 +71,33 @@ router.post('/login', (req, res, next) => {
   let username = req.body.username;
   let password = req.body.password;
 
-  let baseSQL = "SELECT username, password FROM users WHERE username=? AND password=?;"
+  let baseSQL = "SELECT username, password FROM users WHERE username=?;"
 
-  db.execute(baseSQL, [username, password])
+  db.execute(baseSQL, [username])
       .then(([results, fields]) => {
         if (results && results.length === 1) {
-          successPrint(`User ${username} is logged in`);
-          res.locals.logged = true;
-          res.render('index');
+            let hashedPassword = results[0].password;
+          return bcrypt.compare(password, hashedPassword);
         } else {
           throw new UserError(
-              "Invalid username and/or password",
+              "Invalid username and/or password!",
               "/login",
               200
           );
         }
+      })
+      .then((passwordsMatched) => {
+          if (passwordsMatched) {
+              successPrint(`User ${username} is logged in`);
+              res.locals.logged = true;
+              res.render('index');
+          } else {
+              throw new UserError(
+                  "Invalid username and/or password",
+                  "/login",
+                  200
+              );
+          }
       })
       .catch((err) => {
         errorPrint("user login failed");
