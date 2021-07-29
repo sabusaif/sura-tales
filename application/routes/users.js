@@ -5,10 +5,11 @@ const UserError = require("../helpers/error/UserError");
 const { successPrint, errorPrint } = require("../helpers/debug/debugprinters");
 var bcrypt = require('bcrypt');
 
-/* GET users listing. */
+/* GET users listing.
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
+ */
 
 router.post('/register', (req, res, next) => {
   let username = req.body.username;
@@ -46,7 +47,10 @@ router.post('/register', (req, res, next) => {
       .then(([results, fields]) => {
         if(results && results.affectedRows) {
           successPrint("User.js --> User was created!!");
-          res.redirect('/login');
+          req.flash('success', 'User account has been made!');
+            req.session.save( err => {
+                res.redirect('/login');
+            });
         } else {
           throw new UserError(
               "Server Error, user could not be created",
@@ -59,8 +63,11 @@ router.post('/register', (req, res, next) => {
         errorPrint("user could not be made", err);
         if(err instanceof UserError) {
           errorPrint(err.getMessage());
+          req.flash('error', err.getMessage());
           res.status(err.getStatus());
-          res.redirect(err.getRedirectURL());
+            req.session.save( err => {
+                res.redirect(err.getRedirectURL());
+            });
         } else {
           next(err);
         }
@@ -94,7 +101,10 @@ router.post('/login', (req, res, next) => {
               req.session.username = username;
               req.session.userId = userId;
               res.locals.logged = true;
-              res.redirect("/");
+              req.flash('success', 'You have been successfully logged in!');
+              req.session.save( err => {
+                  res.redirect('/');
+              });
           } else {
               throw new UserError(
                   "Invalid username and/or password",
@@ -107,8 +117,11 @@ router.post('/login', (req, res, next) => {
         errorPrint("user login failed");
         if (err instanceof UserError) {
           errorPrint(err.getMessage());
+          req.flash('error', err.getMessage());
           res.status(err.getStatus());
-          res.redirect('/login');
+            req.session.save( err => {
+                res.redirect('/login');
+            });
         } else {
           next(err);
         }

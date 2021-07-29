@@ -30,6 +30,10 @@ body {
     font-family: "Segoe Print", serif;
 }
 
+#search-photo {
+    outline: none;
+}
+
 #home-image {
     height: 30px;
     margin-top: 5px;

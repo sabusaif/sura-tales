@@ -8,6 +8,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var sessions = require('express-session');
 var mySqlSession = require('express-mysql-session')(sessions);
+var flash = require('express-flash');
 
 var app = express();
 
@@ -18,7 +19,11 @@ app.engine(
     partialsDir: path.join(__dirname, "views/partials"), // where to look for partials
     extname: ".hbs", //expected file extension for handlebars files
     defaultLayout: "layout", //default layout for app, general template for all pages in app
-    helpers: {}, //adding new helpers to handlebars for extra functionality
+    helpers: {
+        emptyObject: (obj) => {
+            return !(obj.constructor === Object && Object.keys(obj).length === 0);
+        }
+    }, //adding new helpers to handlebars for extra functionality
   })
 );
 
@@ -35,6 +40,8 @@ app.use(sessions({
     resave: false,
     saveUninitialized: false
 }));
+
+app.use(flash());
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -64,7 +71,7 @@ app.use("/users", usersRouter); // route middleware from ./routes/users.js
  */
 app.use((req,res,next) => {
   next(createError(404, `The route ${req.url} does not exist.`));
-})
+});
   
 
 /**
