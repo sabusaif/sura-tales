@@ -6,6 +6,7 @@ var logger = require("morgan");
 var handlebars = require("express-handlebars");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+var postsRouter = require("./routes/posts");
 var sessions = require('express-session');
 var mySqlSession = require('express-mysql-session')(sessions);
 var flash = require('express-flash');
@@ -63,7 +64,7 @@ app.use((req, res, next) => {
 
 app.use("/", indexRouter); // route middleware from ./routes/index.js
 app.use("/users", usersRouter); // route middleware from ./routes/users.js
-
+app.use("/posts", postsRouter);
 
 /**
  * Catch all route, if we get to here then the 

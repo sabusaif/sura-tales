@@ -6,17 +6,17 @@
                 <header class="post-header">
                     <h1>Post Image Form</h1>
                 </header>
-                <form>
+                <form method="POST" action="/posts/create_post" enctype="multipart/form-data">
                     <div class="grid-post-container">
                         <label id="title" class="site-information">Post Title:</label>
-                        <input type="text" placeholder=" Post Title" id="title-input" class="post-information-input"/>
+                        <input type="text" name="title" placeholder=" Post Title" id="title-input" class="post-information-input" required/>
 
                         <label id="description" class="site-information">Description:</label>
-                        <textarea placeholder=" Description" id="description-input" class="post-information-input"></textarea>
+                        <textarea name="description" placeholder=" Description" id="description-input" class="post-information-input" required></textarea>
 
                         <div id="post">
                             <label id="image" class="site-information">Image:</label>
-                            <input type="file" id="image-input" class="file"/>
+                            <input type="file" name="uploadImage" id="image-input" class="file" required/>
                         </div>
 
                         <div id="checkboxes">

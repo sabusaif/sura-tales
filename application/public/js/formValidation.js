@@ -51,11 +51,17 @@ let passSpecial = document.getElementById("pass-special");
 let checkPass = document.getElementById("confirm-password");
 
 document.getElementById("reg-submit").addEventListener("click", function(submit) {
-    if (validateUserFirstChar() === false || validateUserLengthAndAlpha() === false || validatePassLength() === false
-        || validatePassUppercase() === false || validatePassNumber() === false
-        || validatePassSpecialChar() === false || confirmPass() === false) {
+    if (validateUserFirstChar() === false || validateUserLengthAndAlpha() === false) {
         submit.preventDefault();
-        alert("Submission is invalid.");
+        alert("Invalid username!");
+    } else if (validatePassLength() === false
+        || validatePassUppercase() === false || validatePassNumber() === false
+        || validatePassSpecialChar() === false) {
+        submit.preventDefault();
+        alert("Invalid password!");
+    } else if (confirmPass() === false) {
+        submit.preventDefault();
+        alert("Passwords do not match!");
     }
 });
 
@@ -70,8 +76,7 @@ function validateUserFirstChar() {
 }
 
 function validateUserLengthAndAlpha() {
-    if (username.value.length >= 3 && (/\d/.test(username.value)
-        || /[a-zA-Z]/.test(username.value))) {
+    if (username.value.length >= 3 && /\w/.test(username.value)) {
         userValid.className = "valid";
         return true;
     } else {

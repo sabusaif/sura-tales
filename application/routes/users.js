@@ -4,6 +4,7 @@ var db = require('../conf/database');
 const UserError = require("../helpers/error/UserError");
 const { successPrint, errorPrint } = require("../helpers/debug/debugprinters");
 var bcrypt = require('bcrypt');
+const {registerValidator, loginValidator} = require("../middleware/validation");
 
 /* GET users listing.
 router.get('/', function(req, res, next) {
@@ -11,6 +12,7 @@ router.get('/', function(req, res, next) {
 });
  */
 
+router.use('/register', registerValidator);
 router.post('/register', (req, res, next) => {
   let username = req.body.username;
   let email = req.body.email;
@@ -74,6 +76,7 @@ router.post('/register', (req, res, next) => {
       });
 });
 
+router.use('/login', loginValidator);
 router.post('/login', (req, res, next) => {
   let username = req.body.username;
   let password = req.body.password;
@@ -130,7 +133,7 @@ router.post('/login', (req, res, next) => {
 
 router.post('/logout', (req, res, next) => {
     req.session.destroy((err) => {
-        if(err) {
+        if (err) {
             errorPrint("Session could not be destroyed");
             next(err);
         } else {
