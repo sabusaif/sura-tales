@@ -32,6 +32,7 @@ body {
 
 #search-photo {
     outline: none;
+    padding-left: 10px;
 }
 
 #home-image {
@@ -106,6 +107,7 @@ nav a {
     margin: 20px 0 0 0;
     box-shadow: 0 -2px 2px -2px black, 0 -25px 25px -25px blue, 0 -5px 5px -5px darkblue;
     padding: 20px 100px;
+    height: 300px;
 }
 
 header:not(.home-information):not(.home-title) {

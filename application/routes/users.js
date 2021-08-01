@@ -43,7 +43,7 @@ router.post('/register', (req, res, next) => {
           }
       })
       .then((hashedPassword) => {
-          let baseSQL = "INSERT INTO users (username, email, password, created) VALUES (?,?,?,now());"
+          let baseSQL = "INSERT INTO users (username, email, password, created) VALUES (?,?,?,now());";
           return db.execute(baseSQL,[username, email, hashedPassword])
       })
       .then(([results, fields]) => {
@@ -81,7 +81,7 @@ router.post('/login', (req, res, next) => {
   let username = req.body.username;
   let password = req.body.password;
 
-  let baseSQL = "SELECT id, username, password FROM users WHERE username=?;"
+  let baseSQL = "SELECT id, username, password FROM users WHERE username=?;";
   let userId;
 
   db.execute(baseSQL, [username])
