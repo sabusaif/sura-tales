@@ -31,7 +31,6 @@ body {
 }
 
 #search-photo {
-    outline: none;
     padding-left: 10px;
 }
 
@@ -57,6 +56,7 @@ nav {
 nav ul {
     margin-top: 8px;
     margin-right: 20px;
+    padding-left: 0;
 }
 
 nav li {
@@ -94,16 +94,17 @@ nav a {
 
 .image-post {
     margin: 20px auto auto auto;
-    width: 70%;
+    width: 80%;
 }
 
 .post-information {
     text-align: center;
-    width: 80%;
+    width: 100%;
     margin-top: 20px;
+    justify-self: right;
 }
 
-#fake-image {
+#users-image {
     margin: 20px 0 0 0;
     box-shadow: 0 -2px 2px -2px black, 0 -25px 25px -25px blue, 0 -5px 5px -5px darkblue;
     padding: 20px 100px;
@@ -168,8 +169,75 @@ header:not(.home-information) {
     display: grid;
     height: 25vh;
     margin-bottom: 10px;
-    grid-template-rows: repeat(4, 1fr);
-    justify-items: center;
+    grid-template-columns: 2fr 1fr;
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    height: 430px;
+    width: 120%;
+    background-color: rgba(33, 75, 120, 0.5);
+    border-top-right-radius: 50px 20px;
+    border-bottom-right-radius: 50px 20px;
+    border: 4px none rgba(245, 245, 245, 0.7);
+    border-right-style: double;
+}
+
+#comment-title {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 10px;
+    padding-bottom: 15px;
+    border-bottom: 4px double rgba(245, 245, 245, 0.7);
+    font-family: "Segoe Print", serif;
+    color: white;
+    text-shadow: 1px 1px 2px #ffffff, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.card {
+    margin: 20px auto auto auto;
+    width: 220px;
+    background-color: rgba(33, 75, 120, 0.5);
+    border-bottom-left-radius: 50px 20px;
+    border-bottom-right-radius: 50px 20px;
+    border: 4px double rgba(245, 245, 245, 0.7);
+    border-bottom: none;
+}
+
+.card-title, .card-text {
+    text-shadow: 1px 1px 5px #04044c;
+    color: #c5ceca;
+}
+
+.card-image {
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-body {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: "Kalam", serif;
+}
+
+.card-title {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.card-text {
+    font-size: 15px;
+    margin-top: 0;
+}
+
+.anchor-buttons {
+    font-size: 13px;
+    color: rgba(245, 245, 245, 0.8);
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
 }
 
 .file {
@@ -249,6 +317,10 @@ br {
     background-color: white;
 }
 
+input {
+    outline: none;
+}
+
 input:not(.checkbox):not(.file):not(.search-input):placeholder-shown, textarea:placeholder-shown {
     grid-column: 2 / 4;
     margin-top: 10px;
@@ -271,6 +343,25 @@ input:not(.checkbox):not(.file):not(.search-input):not(placeholder-shown), texta
     border-right: 2px solid rgba(95, 138, 161, 0.36);
     border-top: 2px solid rgba(95, 138, 161, 0.36);
     background-color: aliceblue;
+}
+
+#comment-section {
+    margin-top: auto;
+}
+
+#type-comment {
+    background-color: antiquewhite;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 0;
+    padding-left: 5px;
+    width: 75%;
+}
+
+#comment-button {
+    border-bottom-left-radius: 50px 20px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .search {
@@ -299,7 +390,7 @@ input:not(.checkbox):not(.file):not(.search-input):not(placeholder-shown), texta
     width: 60%;
 }
 
-#author, #time, .option {
+#author, #time, #description, .option {
     font-family: "Segoe Print", serif;
     color: white;
     text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
@@ -354,6 +445,54 @@ input:hover:not(.file):not(.search-input):placeholder-shown, input:focus:not(.fi
     background-color: #597d9e;
 }
 
+@media screen and (max-width: 1055px) {
+    #main-content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-auto-columns: 1fr 1fr 1fr;
+        grid-auto-rows: 1fr;
+    }
+}
+
+@media screen and (max-width: 819px) {
+    #main-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-auto-columns: 1fr;
+        grid-auto-rows: 1fr;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #main-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        grid-auto-columns: 1fr 1fr;
+        grid-auto-rows: 1fr;
+    }
+}
+
+@media screen and (max-width: 1020px) {
+    nav li {
+        margin-left: 40px;
+    }
+}
+
+@media screen and (max-width: 910px) {
+    #post-button {
+        margin-left: 10px;
+    }
+}
+
+@media screen and (max-width: 793px) {
+    .home-information {
+        height: 80px;
+    }
+}
+
 @media screen and (max-width: 838px) {
     #registration {
         height: 465px;
@@ -368,10 +507,10 @@ input:hover:not(.file):not(.search-input):placeholder-shown, input:focus:not(.fi
 
 @media screen and (max-width: 620px) {
     #login {
-        margin-top: 100px;
+        margin-top: 60px;
         margin-bottom: 100px;
         width: 200px;
-        height: 360px;
+        height: 380px;
     }
 
     .log-header {
@@ -495,23 +634,27 @@ input:hover:not(.file):not(.search-input):placeholder-shown, input:focus:not(.fi
     }
 }
 
-@media screen and (max-width: 649px) {
+@media screen and (max-width: 677px) {
     .reg-check {
         font-size: 75%;
     }
 }
 
-@media screen and (max-width: 535px) {
+@media screen and (max-width: 577px) {
+    #registration {
+        height: 600px;
+    }
+
     .reg-check {
         font-size: 70%;
     }
 
     .reg-header {
-        font-size: 90%;
+        font-size: 80%;
     }
 }
 
-@media screen and (max-width: 975px) {
+@media screen and (max-width: 990px) {
     #post-image {
         height: 460px;
     }
@@ -574,9 +717,13 @@ input:hover:not(.file):not(.search-input):placeholder-shown, input:focus:not(.fi
     }
 }
 
-@media screen and (max-width: 590px) {
+@media screen and (max-width: 639px) {
+    #post-image {
+        height: 505px;
+    }
+
     .post-header {
-        font-size: 80%;
+        font-size: 70%;
     }
 
     #post-check {
@@ -584,15 +731,42 @@ input:hover:not(.file):not(.search-input):placeholder-shown, input:focus:not(.fi
     }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1130px) {
     .post-information {
-        width: 100%;
+        justify-self: center;
     }
 
-    #fake-image {
+    .grid-image-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+    .comments {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 50px 20px;
+        border-bottom-left-radius: 50px 20px;
+        border: 4px double rgba(245, 245, 245, 0.7);
+        border-top-style: none;
+        margin-top: 0;
+        width: 100%;
+        justify-self: center;
+    }
+
+    #type-comment {
+        padding-left: 20px;
+        border-bottom-left-radius: 50px 20px;
+    }
+
+    #users-image {
         padding-left: 10px;
         padding-right: 10px;
-        max-width: 100%;
-        height: auto;
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 605px) {
+    #type-comment {
+        width: 70%
     }
 }

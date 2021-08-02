@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-    <body class="image-post">
+    <body>
+        <div class="image-post">
             <div class="grid-image-container">
                 <div class="post-information">
                     <div class="post-details">
                         <h2 id="post-title" class="post-detail">{{currentPost.title}}</h2>
-                        <h3 id="author" class="post-detail">{{currentPost.description}}</h3>
-                        <h3 id="author" class="post-detail">_-__-_-___-  {{currentPost.username}}  -___-_-__-_</h3>
+                        <h3 id="description" class="post-detail">{{currentPost.description}}</h3>
+                        <h3 id="author" class="post-detail">{{currentPost.username}}</h3>
                         <h4 id="time" class="post-detail">{{currentPost.created}}</h4>
                     </div>
-                    <img src="/{{currentPost.photopath}}" id="fake-image">
+                    <img src="/{{currentPost.photopath}}" id="users-image">
+                </div>
+                <div class="comments">
+                    <div id="comment-title">Comments</div>
+                    <form id="comment-section">
+                        <input type="text" placeholder="Comment here" id="type-comment"/>
+                        <button type="submit" id="comment-button" class="site-submit">Send</button>
+                    </form>
                 </div>
             </div>
+        </div>
     </body>
 </html>
