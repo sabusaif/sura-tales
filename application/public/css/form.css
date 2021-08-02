@@ -107,8 +107,8 @@ nav a {
 #users-image {
     margin: 20px 0 0 0;
     box-shadow: 0 -2px 2px -2px black, 0 -25px 25px -25px blue, 0 -5px 5px -5px darkblue;
-    padding: 20px 100px;
-    height: 300px;
+    padding: 20px 30px;
+    width: 500px;
 }
 
 header:not(.home-information):not(.home-title) {
@@ -731,7 +731,7 @@ input:hover:not(.file):not(.search-input):placeholder-shown, input:focus:not(.fi
     }
 }
 
-@media screen and (max-width: 1130px) {
+@media screen and (max-width: 1200px) {
     .post-information {
         justify-self: center;
     }
@@ -761,7 +761,6 @@ input:hover:not(.file):not(.search-input):placeholder-shown, input:focus:not(.fi
     #users-image {
         padding-left: 10px;
         padding-right: 10px;
-        height: 300px;
     }
 }
 
