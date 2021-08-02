@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var db = require("../conf/database");
 const { successPrint, errorPrint } = require("../helpers/debug/debugprinters");
 var sharp = require('sharp');
 var multer = require('multer');
 var crypto = require('crypto');
+var PostModel = require('../models/Posts');
 var PostError = require("../helpers/error/PostError");
-const {postImageValidator} = require("../middleware/validation");
+const { postImageValidator } = require("../middleware/validation");
 
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -33,13 +33,12 @@ router.post('/create_post', uploader.single("uploadImage"), (req, res, next) => 
     .resize(200)
     .toFile(destinationOfThumbnail)
     .then(() => {
-        let baseSQL = "INSERT INTO posts (title, description, photopath, thumbnail, created, fk_userid) VALUE (?,?,?,?,now(),?);";
-        return db.execute(baseSQL, [title, description, fileUploaded, destinationOfThumbnail, fk_userId]);
+        return PostModel.create(title, description, fileUploaded, destinationOfThumbnail, fk_userId);
     })
-    .then(([results, fields]) => {
-        if (results && results.affectedRows) {
+    .then((postWasCreated) => {
+        if (postWasCreated) {
             req.flash('success', 'Your post was created successfully!');
-            req.session.save( err => {
+            req.session.save(err => {
                 res.redirect('/');
             });
         } else {
@@ -55,47 +54,40 @@ router.post('/create_post', uploader.single("uploadImage"), (req, res, next) => 
             errorPrint(err.getMessage());
             req.flash('error', err.getMessage());
             res.status(err.getStatus());
-            res.redirect(err.getRedirectURL());
+            req.session.save(err => {
+                res.redirect(err.getRedirectURL());
+            });
         } else {
             next(err);
         }
     });
 });
 
-router.get('/search', (req, res, next) => {
-    let searchTerm = req.query.search;
-    if (!searchTerm) {
-        res.send({
-            resultsStatus: "info",
-            message: "No search term given",
-            results: []
-        });
-    } else {
-        let baseSQL = "SELECT id, title, description, thumbnail, concat_ws(' ', title, description) AS haystack FROM posts HAVING haystack like ?;";
-        let sqlReadySearchTerm = "%" + searchTerm + "%";
-
-        db.execute(baseSQL, [sqlReadySearchTerm])
-        .then(([results, fields]) => {
-            if (results && results.length) {
+router.get('/search', async (req, res, next) => {
+    try {
+        let searchTerm = req.query.search;
+        if (!searchTerm) {
+            res.send({
+                message: "No search term given",
+                results: [],
+            });
+        } else {
+            let results = await PostModel.search(searchTerm);
+            if (results.length) {
                 res.send({
-                    resultsStatus: "info",
                     message: `${results.length} results found`,
-                    results: results
+                    results: results,
                 });
             } else {
-                db.query("SELECT id, title, description, thumbnail, created FROM posts ORDER BY created DESC LIMIT 8;", [])
-                .then(([results, fields]) => {
-                    res.send({
-                        resultsStatus: "info",
-                        message: "No results were found, but here are the 8 most recent posts",
-                        results: results
-                    });
+                let results = await PostModel.getNRecentPosts(8);
+                res.send({
+                    message: "No results were found, but here are the 8 most recent posts",
+                    results: results,
                 });
             }
-        })
-        .catch((err) => {
-            next(err);
-        });
+        }
+    } catch (err) {
+        next(err);
     }
 })
 
