@@ -11,10 +11,10 @@ if (document.cookie.includes('logged')) {
 }
  */
 
-let currentOpacity = 1.0;
 
 function setFlashMessageFadeOut(flashMessageElement) {
     let time = setTimeout(() => {
+        let currentOpacity = 1.0;
         let timer = setInterval(() => {
             if (currentOpacity < 0.05) {
                 clearInterval(timer);

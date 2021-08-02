@@ -206,11 +206,6 @@ header:not(.home-information) {
     border-bottom: none;
 }
 
-.card-title, .card-text {
-    text-shadow: 1px 1px 5px #04044c;
-    color: #c5ceca;
-}
-
 .card-image {
     display: block;
     margin-top: 10px;
@@ -222,6 +217,8 @@ header:not(.home-information) {
     text-align: center;
     margin-bottom: 20px;
     font-family: "Kalam", serif;
+    text-shadow: 1px 1px 5px #04044c;
+    color: #c5ceca;
 }
 
 .card-title {
@@ -390,7 +387,7 @@ input:not(.checkbox):not(.file):not(.search-input):not(placeholder-shown), texta
     width: 60%;
 }
 
-#author, #time, #description, .option {
+#author, #time, #post-description, .option {
     font-family: "Segoe Print", serif;
     color: white;
     text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
@@ -455,7 +452,7 @@ input:hover:not(.file):not(.search-input):placeholder-shown, input:focus:not(.fi
     }
 }
 
-@media screen and (max-width: 819px) {
+@media screen and (max-width: 830px) {
     #main-content {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -487,7 +484,7 @@ input:hover:not(.file):not(.search-input):placeholder-shown, input:focus:not(.fi
     }
 }
 
-@media screen and (max-width: 793px) {
+@media screen and (max-width: 819px) {
     .home-information {
         height: 80px;
     }
