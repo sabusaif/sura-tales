@@ -10,7 +10,7 @@ PostModel.create = (title, description, photoPath, thumbnail, fk_userId) => {
         .catch((err) => {
             return Promise.reject(err);
         });
-}
+};
 
 PostModel.search = (searchTerm) => {
     let baseSQL = "SELECT id, title, description, thumbnail, concat_ws(' ', title, description) AS haystack FROM posts HAVING haystack like ?;";
@@ -23,7 +23,7 @@ PostModel.search = (searchTerm) => {
         .catch((err) => {
             return Promise.reject(err);
         });
-}
+};
 
 PostModel.getNRecentPosts = (numberOfPost) => {
     let baseSQl = "SELECT id, title, description, thumbnail, created FROM posts ORDER BY created DESC LIMIT ?;";
@@ -36,6 +36,18 @@ PostModel.getNRecentPosts = (numberOfPost) => {
         .catch((err) => {
             return Promise.reject(err);
         });
-}
+};
+
+PostModel.getPostById = (postId) => {
+    let baseSQL = "SELECT u.username, p.title, p.description, p.photopath, p.created FROM users u JOIN posts p ON u.id=fk_userid WHERE p.id=?;";
+
+    return db.execute(baseSQL, [postId])
+        .then(([results, field]) => {
+            return Promise.resolve(results);
+        })
+        .catch((err) => {
+            return Promise.reject(err);
+        });
+};
 
 module.exports = PostModel;

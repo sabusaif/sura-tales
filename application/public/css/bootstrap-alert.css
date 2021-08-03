@@ -82,3 +82,14 @@
 .alert-danger .alert-link {
     color: #843534;
 }
+
+@media screen and (max-width: 819px) {
+    #flash-message {
+        top: 215px;
+        right: 5%;
+    }
+
+    .alert {
+        margin-top: 6px;
+    }
+}

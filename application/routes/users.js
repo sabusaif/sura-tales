@@ -5,7 +5,8 @@ const UserModel = require('../models/Users');
 const UserError = require("../helpers/error/UserError");
 const { successPrint, errorPrint } = require("../helpers/debug/debugprinters");
 var bcrypt = require('bcrypt');
-const {registerValidator, loginValidator} = require("../middleware/validation");
+const {registerUsernameValidator, registerPasswordValidator, registerEmailValidator,
+    loginUsernameValidator, loginPasswordValidator} = require("../middleware/validation");
 
 /* GET users listing.
 router.get('/', function(req, res, next) {
@@ -13,7 +14,8 @@ router.get('/', function(req, res, next) {
 });
  */
 
-router.post('/register', registerValidator, (req, res, next) => {
+router.post('/register', registerUsernameValidator, registerPasswordValidator, registerEmailValidator,
+    (req, res, next) => {
   let username = req.body.username;
   let email = req.body.email;
   let password = req.body.password;
@@ -72,7 +74,8 @@ router.post('/register', registerValidator, (req, res, next) => {
       });
 });
 
-router.post('/login', loginValidator, (req, res, next) => {
+router.post('/login', loginUsernameValidator, loginPasswordValidator,
+    (req, res, next) => {
   let username = req.body.username;
   let password = req.body.password;
 

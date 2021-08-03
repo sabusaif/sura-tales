@@ -7,6 +7,7 @@ var handlebars = require("express-handlebars");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var postsRouter = require("./routes/posts");
+var commentRouter = require("./routes/comments");
 var sessions = require('express-session');
 var mySqlSession = require('express-mysql-session')(sessions);
 var flash = require('express-flash');
@@ -55,7 +56,7 @@ app.use(cookieParser());
 app.use("/public", express.static(path.join(__dirname, "public")));
 
 app.use((req, res, next) => {
-    console.log(req.session);
+    //console.log(req.session);
     if(req.session.username) {
         res.locals.logged = true;
     }
@@ -65,6 +66,7 @@ app.use((req, res, next) => {
 app.use("/", indexRouter); // route middleware from ./routes/index.js
 app.use("/users", usersRouter); // route middleware from ./routes/users.js
 app.use("/posts", postsRouter);
+app.use("/comments", commentRouter);
 
 /**
  * Catch all route, if we get to here then the 

@@ -7,15 +7,18 @@
                     <div class="post-details">
                         <h2 id="post-title" class="post-detail">{{currentPost.title}}</h2>
                         <h3 id="post-description" class="post-detail">{{currentPost.description}}</h3>
-                        <h3 id="author" class="post-detail">{{currentPost.username}}</h3>
-                        <h4 id="time" class="post-detail">{{currentPost.created}}</h4>
+                        <h3 id="author" class="post-detail">Posted by: {{currentPost.username}}</h3>
+                        <h4 id="time" class="post-detail">Posted on: {{currentPost.created}}</h4>
                     </div>
                     <img src="/{{currentPost.photopath}}" id="users-image">
                 </div>
                 <div class="comments">
                     <div id="comment-title">Comments</div>
+                    <div id="messages">
+                        {{log this}}
+                    </div>
                     <form id="comment-section">
-                        <input type="text" placeholder="Comment here" id="type-comment"/>
+                        <textarea placeholder="Comment here" id="type-comment"></textarea>
                         <button type="submit" id="comment-button" class="site-submit">Send</button>
                     </form>
                 </div>

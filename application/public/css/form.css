@@ -353,6 +353,7 @@ input:not(.checkbox):not(.file):not(.search-input):not(placeholder-shown), texta
     border-bottom-right-radius: 0;
     padding-left: 5px;
     width: 75%;
+    height: 50px;
 }
 
 #comment-button {
@@ -399,6 +400,10 @@ input:not(.checkbox):not(.file):not(.search-input) {
 }
 
 textarea {
+    outline: none;
+}
+
+textarea:not(.type-comment) {
     height: 75px;
 }
 
