@@ -99,17 +99,17 @@ router.post('/login', loginUsernameValidator, loginPasswordValidator,
           }
       })
       .catch((err) => {
-        errorPrint("user login failed");
-        if (err instanceof UserError) {
-          errorPrint(err.getMessage());
-          req.flash('error', err.getMessage());
-          res.status(err.getStatus());
-            req.session.save( err => {
-                res.redirect('/login');
-            });
-        } else {
-          next(err);
-        }
+          errorPrint("user login failed");
+          if (err instanceof UserError) {
+              errorPrint(err.getMessage());
+              req.flash('error', err.getMessage());
+              res.status(err.getStatus());
+              req.session.save( err => {
+                  res.redirect('/login');
+              });
+          } else {
+              next(err);
+          }
       });
 });
 

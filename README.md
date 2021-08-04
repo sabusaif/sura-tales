@@ -8,20 +8,18 @@ Please follow the instructions below and fill in the information requested when 
 
 ## Student Information
 
-|               | Information   |
-|:-------------:|:-------------:|
-| Student Name  | name-here     |
-| Student ID    | id-here       |
-| Student Email | email-here    |
+|               | Information               |
+|:-------------:|:-------------------------:|
+| Student Name  | Sarah Abusaif             |
+| Student ID    | 921103999                 |
+| Student Email | sabusaif@mail.sfsu.edu    |
 
 
 
 # Build/Run Instructions
 
 ## Build Instructions
-1. steps here
-2. steps here
+1. npm install
 
 ## Run Instructions
-1. steps here
-2. steps here 
+1. npm start

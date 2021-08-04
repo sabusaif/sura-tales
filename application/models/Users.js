@@ -52,7 +52,7 @@ UserModel.authenticate = (username, password) => {
                 userId = results[0].id;
                 return bcrypt.compare(password, hashedPassword);
             } else {
-                return Promise.reject(-1);
+                return Promise.resolve(-1);
             }
         })
         .then((passwordsMatched) => {

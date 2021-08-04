@@ -7,22 +7,81 @@
                     <div class="post-details">
                         <h2 id="post-title" class="post-detail">{{currentPost.title}}</h2>
                         <h3 id="post-description" class="post-detail">{{currentPost.description}}</h3>
-                        <h3 id="author" class="post-detail">Posted by: {{currentPost.username}}</h3>
-                        <h4 id="time" class="post-detail">Posted on: {{currentPost.created}}</h4>
                     </div>
                     <img src="/{{currentPost.photopath}}" id="users-image">
+                    <div class="post-details">
+                        <h3 id="author" class="post-detail">Posted by: {{currentPost.username}}</h3>
+                        <h4 id="time" class="post-detail">{{currentPost.created}}</h4>
+                    </div>
                 </div>
                 <div class="comments">
                     <div id="comment-title">Comments</div>
                     <div id="messages">
-                        {{log this}}
+                        {{#each currentPost.comments}}
+                            {{> comment this}}
+                        {{/each}}
                     </div>
                     <form id="comment-section">
-                        <textarea placeholder="Comment here" id="type-comment"></textarea>
-                        <button type="submit" id="comment-button" class="site-submit">Send</button>
+                        <label for="type-comment"></label><textarea placeholder="Comment here" id="type-comment"></textarea>
+                        <span type="submit" id="comment-button">Send</span>
                     </form>
                 </div>
             </div>
         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', (event) => {
+                document.querySelectorAll('span[class=date-posted]').forEach((postedDate) => {
+                    postedDate.textContent = new Date(postedDate.textContent).toLocaleString();
+                });
+
+                document.querySelectorAll('h4[id=time]').forEach((postedDate) => {
+                    let date = "Posted on: ";
+                    date += new Date(postedDate.textContent).toLocaleString();
+                    postedDate.textContent = date;
+                });
+
+                function addMessage(data) {
+                    let template = document.createElement('template');
+                    template.innerHTML =
+                        `<div id="message-${data.commentId}">
+                            <strong class="author-text">@${data.username}</strong>
+                            <span class="date-posted">${new Date().toLocaleString()}</span>
+                            <div class="comment-text">${data.comment}</div>
+                        </div>
+                        `;
+                    document.getElementById('messages').firstChild.before(template.content.firstChild);
+                }
+
+                document.getElementById('comment-button').onclick = (event) => {
+                    let commentText = document.getElementById('type-comment').value;
+                    let postId = document.location.pathname.match(/\d+/g).map(Number)[0];
+
+                    let fetchOptions = {
+                        method: "POST",
+                        headers: {
+                            "Content-Type":"Application/json"
+                        },
+                        body: JSON.stringify({
+                            comment: commentText,
+                            postId: postId
+                        })
+                    }
+
+                    fetch('/comments/create', fetchOptions)
+                        .then((response) => response.json())
+                        .then((data) => {
+                            if (data.code === 1) {
+                                addMessage(data);
+                            } else {
+                                addFlashFromFrontEnd(data.message, data.status);
+                            }
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
+                    }
+            });
+        </script>
     </body>
 </html>

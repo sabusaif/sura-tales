@@ -1,17 +1,3 @@
-/*
-if (document.cookie.includes('logged')) {
-    console.log("user is logged");
-    let ele = document.getElementById('logging-button');
-    ele.innerHTML = "Log Out";
-    ele.setAttribute("href", "/usermgnt/logout");
-} else {
-    let ele = document.getElementById('logging-button');
-    ele.innerHTML = "Log In";
-    ele.setAttribute("href", "/login");
-}
- */
-
-
 function setFlashMessageFadeOut(flashMessageElement) {
     let time = setTimeout(() => {
         let currentOpacity = 1.0;
@@ -36,7 +22,7 @@ function setFlashMessageFadeOut(flashMessageElement) {
     }, 4000);
 }
 
-function addFlashFromFrontEnd(message) {
+function addFlashFromFrontEnd(message, level) {
     let flashMessageDiv = document.createElement("div");
     let innerFlashDiv = document.createElement("div");
     let innerFlashA = document.createElement("a");
@@ -54,8 +40,8 @@ function addFlashFromFrontEnd(message) {
     flashMessageDiv.appendChild(innerBootstrap);
 
     flashMessageDiv.setAttribute("id", "flash-message");
-    innerFlashDiv.setAttribute("id", "info");
-    innerFlashDiv.setAttribute("class", "alert alert-info alert-dismissible close");
+    innerFlashDiv.setAttribute("id", level);
+    innerFlashDiv.setAttribute("class", "alert alert-" + level + " alert-dismissible close");
 
     innerFlashA.setAttribute("class", "close dismiss");
     innerFlashA.setAttribute("data-dismiss", "alert");
@@ -97,7 +83,7 @@ function executeSearch() {
         });
         mainContent.innerHTML = newMainContentHTML;
         if (data_json.message) {
-            addFlashFromFrontEnd(data_json.message);
+            addFlashFromFrontEnd(data_json.message, "info");
         }
     })
     .catch((err) => {

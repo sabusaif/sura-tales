@@ -175,7 +175,7 @@ header:not(.home-information) {
 .comments {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 50px;
     height: 430px;
     width: 120%;
     background-color: rgba(33, 75, 120, 0.5);
@@ -342,6 +342,52 @@ input:not(.checkbox):not(.file):not(.search-input):not(placeholder-shown), texta
     background-color: aliceblue;
 }
 
+#messages {
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    scroll-behavior: smooth;
+    border: none;
+    border-bottom: 1px solid whitesmoke;
+    box-shadow: 0 4px 2px -2px antiquewhite;
+}
+
+div[id^=message-] {
+    display: grid;
+    grid-template-rows: 0.3fr 1fr;
+    grid-template-columns: 0.1fr 1fr;
+    column-gap: 0.5rem;
+    row-gap: 0.2rem;
+    padding: 0.35rem;
+    margin: 0.2rem 0.4rem;
+    border-top: 0.0625rem solid rgba(250, 235, 215, 0.5);
+    font-size: 1rem;
+    font-family: "Kalam", serif;
+    grid-template-areas:
+    "author created"
+    "comment comment";
+}
+
+.author-text {
+    grid-area: author;
+    justify-self: start;
+    color: antiquewhite;
+}
+
+.comment-text {
+    grid-area: comment;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: floralwhite;
+}
+
+.date-posted {
+    grid-area: created;
+    justify-self: start;
+    color: rgba(255, 239, 213, 0.5);
+}
+
 #comment-section {
     margin-top: auto;
 }
@@ -357,6 +403,15 @@ input:not(.checkbox):not(.file):not(.search-input):not(placeholder-shown), texta
 }
 
 #comment-button {
+    display: inline-block;
+    font-size: 20px;
+    font-family: "Ink Free", serif;
+    font-weight: bold;
+    background-color: cornflowerblue;
+    border-radius: 25rem;
+    border: 2px outset #304b76;
+    box-shadow: 2px 2px 2px #2c2a2a;
+    cursor: pointer;
     border-bottom-left-radius: 50px 20px;
     padding-left: 10px;
     padding-right: 10px;

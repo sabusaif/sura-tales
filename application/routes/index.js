@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var isLoggedIn = require('../middleware/routeprotector').userIsLoggedIn;
-const {getRecentPosts, getPostById} = require('../middleware/postmiddleware');
+const {getRecentPosts, getPostById, getCommentsByPostId} = require('../middleware/postmiddleware');
 var db = require("../conf/database");
 
 /* GET home page. */
@@ -22,7 +22,7 @@ router.get('/post_image', (req, res, next) => {
   res.render('postimage', { title: 'Post Image'});
 });
 
-router.get('/post/:id(\\d+)', getPostById, (req, res, next) => {
+router.get('/post/:id(\\d+)', getPostById, getCommentsByPostId, (req, res, next) => {
   res.render('imagepost', { title: `Post ${req.params.id}` });
 });
 

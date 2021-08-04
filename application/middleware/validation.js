@@ -103,8 +103,7 @@ const postImageDescriptionValidator = (req, res, next) => {
 };
 
 const postImageValidator = (req, res, next) => {
-    let image = req.file.filePath;
-    if (!checkNotEmpty(image)) {
+    if (req.file.filePath === undefined) {
         req.flash('error', 'Invalid image!');
         req.session.save(err => {
             res.redirect("/post_image");
