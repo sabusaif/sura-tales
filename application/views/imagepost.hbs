@@ -74,7 +74,7 @@
                             if (data.code === 1) {
                                 addMessage(data);
                             } else {
-                                addFlashFromFrontEnd(data.message, data.status);
+                                addFlashFromFrontEnd(data.message, "warning");
                             }
                         })
                         .catch((err) => {

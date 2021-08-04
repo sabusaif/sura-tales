@@ -22,7 +22,7 @@ var storage = multer.diskStorage({
 var uploader = multer({storage: storage});
 
 router.post('/create_post', uploader.single("uploadImage"),
-    postImageTitleValidator, postImageDescriptionValidator,
+    postImageTitleValidator, postImageDescriptionValidator, postImageValidator,
     (req, res, next) => {
     let fileUploaded = req.file.path;
     let fileAsThumbnail = `thumbnail-${req.file.filename}`;

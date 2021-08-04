@@ -224,11 +224,15 @@ header:not(.home-information) {
 .card-title {
     font-size: 20px;
     margin-bottom: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 .card-text {
     font-size: 15px;
     margin-top: 0;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 .anchor-buttons {
@@ -824,5 +828,12 @@ input:hover:not(.file):not(.search-input):placeholder-shown, input:focus:not(.fi
 @media screen and (max-width: 605px) {
     #type-comment {
         width: 70%
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #users-image {
+        max-width: 80%;
+        min-width: 270px;
     }
 }
