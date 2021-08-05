@@ -8,12 +8,6 @@ var bcrypt = require('bcrypt');
 const {registerUsernameValidator, registerPasswordValidator, registerEmailValidator,
     loginUsernameValidator, loginPasswordValidator} = require("../middleware/validation");
 
-/* GET users listing.
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
- */
-
 router.post('/register', registerUsernameValidator, registerPasswordValidator, registerEmailValidator,
     (req, res, next) => {
   let username = req.body.username;
