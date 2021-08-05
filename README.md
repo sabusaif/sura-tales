@@ -25,3 +25,5 @@ Please follow the instructions below and fill in the information requested when 
 ## Run Instructions
 1. cd application
 2. npm start
+3. open browser
+4. search "localhost:3000"
