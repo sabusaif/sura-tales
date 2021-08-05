@@ -9,7 +9,7 @@ const checkPassword = (password) => {
 };
 
 const checkEmail = (email) => {
-    let emailChecker = /[@][a-zA-Z]+[.]/;
+    let emailChecker = /\w[@][a-zA-Z]+[.][a-zA-Z]/;
     return emailChecker.test(email);
 };
 

@@ -57,7 +57,7 @@ router.post('/create_post', uploader.single("uploadImage"),
             req.flash('error', err.getMessage());
             res.status(err.getStatus());
             req.session.save(err => {
-                res.redirect(err.getRedirectURL());
+                res.redirect('/post_image');
             });
         } else {
             next(err);
