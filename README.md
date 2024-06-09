@@ -1,22 +1,4 @@
-# CSC 317 Term Project
-
-## Purpose
-
-The purpose of this repository is to store all the code for your web application. This also includes the history of all commits made and who made them. Only code submitted on the master branch will be graded.
-
-Please follow the instructions below and fill in the information requested when prompted.
-
-## Student Information
-
-|               | Information               |
-|:-------------:|:-------------------------:|
-| Student Name  | Sarah Abusaif             |
-| Student ID    | 921103999                 |
-| Student Email | sabusaif@mail.sfsu.edu    |
-
-
-
-# Build/Run Instructions
+# Sura Tales Project
 
 ## Build Instructions
 1. cd application
@@ -27,3 +9,9 @@ Please follow the instructions below and fill in the information requested when 
 2. npm start
 3. open browser
 4. search "localhost:3000"
+
+![sura-tales1](https://github.com/sabusaif/sura-tales/assets/65926255/683bb93e-9386-41eb-84be-feac6b00ce6d)
+
+![sura-tales2](https://github.com/sabusaif/sura-tales/assets/65926255/683fce59-0bd7-4b72-882e-6c4163e3e415)
+
+![sura-tales3](https://github.com/sabusaif/sura-tales/assets/65926255/c2155c45-3ccd-4677-97bc-1f2da81aa74e)
